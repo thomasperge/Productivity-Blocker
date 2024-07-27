@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Productivity Blocker",
-  "version": "1.7",
+  "version": "1.5",
   "description": "Block distracting websites and remind yourself to stay productive.",
   "permissions": [
     "webRequest",
@@ -13,22 +13,24 @@
   ],
   "host_permissions": [
     "*://*.youtube.com/*",
-    "*://*.instagram.com/*",
-    "*://*.twitch.tv/*",
-    "<all_urls>"
+    "*://*.instagram.com/*"
   ],
   "background": {
     "service_worker": "background.js"
   },
   "content_scripts": [
     {
-      "matches": ["<all_urls>"],
-      "js": ["content.js"],
-      "css": ["content.css"],
+      "matches": [
+        "*://*.youtube.com/*",
+        "*://*.instagram.com/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "css": [
+        "content.css"
+      ],
       "run_at": "document_start"
     }
-  ],
-  "action": {
-    "default_popup": "popup.html"
-  }
+  ]
 }
