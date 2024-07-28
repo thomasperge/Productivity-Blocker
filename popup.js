@@ -52,7 +52,6 @@ document.addEventListener('DOMContentLoaded', function () {
   blockSocialMediaButton.addEventListener('click', function () {
     const socialMediaSites = [
       'https://www.facebook.com',
-      'https://www.twitter.com',
       'https://www.x.com',
       'https://www.instagram.com',
       'https://www.tiktok.com',
