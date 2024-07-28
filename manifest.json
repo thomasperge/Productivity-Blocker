@@ -1,12 +1,15 @@
 {
   "manifest_version": 3,
   "name": "Stay Focused, Block Sites",
-  "version": "1.9",
+  "version": "1.5",
   "description": "Block distracting websites and remind yourself to stay productive.",
   "permissions": [
-    "storage",
-    "activeTab",
-    "scripting"
+    "webRequest",
+    "webRequestBlocking",
+    "declarativeNetRequest",
+    "declarativeNetRequestWithHostAccess",
+    "tabs",
+    "storage"
   ],
   "host_permissions": [
     "<all_urls>"
@@ -16,8 +19,12 @@
   },
   "content_scripts": [
     {
-      "matches": ["<all_urls>"],
-      "js": ["content.js"],
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "content.js"
+      ],
       "run_at": "document_start"
     }
   ],

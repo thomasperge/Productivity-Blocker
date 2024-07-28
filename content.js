@@ -1,12 +1,19 @@
 // content.js
 
-chrome.storage.sync.get(['blockedSites'], function (result) {
+const quotes = [
+  "Le succès, c'est se promener d'échecs en échecs tout en restant motivé. - Winston Churchill",
+  "Ne laissez pas le bruit des opinions des autres étouffer votre propre voix intérieure. - Steve Jobs",
+  "La meilleure façon de prédire l'avenir est de le créer. - Peter Drucker",
+  "Ne crains pas d'avancer lentement, crains seulement de t'arrêter. - Proverbe chinois",
+  "La seule limite à notre épanouissement de demain sera nos doutes d'aujourd'hui. - Franklin D. Roosevelt"
+];
+
+chrome.storage.sync.get(['blockedSites', 'blockMessage'], function (result) {
   const blockedSites = result.blockedSites || [];
+  const blockMessage = result.blockMessage || quotes[Math.floor(Math.random() * quotes.length)];
   const currentUrl = window.location.href;
 
-  const isBlocked = blockedSites.some(site => {
-    return currentUrl.includes(site);
-  });
+  const isBlocked = blockedSites.some(site => currentUrl.includes(site));
 
   if (isBlocked) {
     document.addEventListener("DOMContentLoaded", function () {
@@ -22,7 +29,7 @@ chrome.storage.sync.get(['blockedSites'], function (result) {
       messageDiv.style.color = 'white';
       messageDiv.style.fontSize = '24px';
       messageDiv.style.textAlign = 'center';
-      messageDiv.innerText = 'Ce site est bloqué pour des raisons de productivité. Retournez au travail !';
+      messageDiv.innerText = blockMessage;
 
       document.body.appendChild(messageDiv);
     });

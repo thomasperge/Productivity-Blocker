@@ -1,29 +1,36 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-  <title>Productivity Blocker</title>
+  <title>Stay Focused, Block Sites</title>
   <style>
     body {
       font-family: 'Roboto', sans-serif;
     }
+
     .container {
       width: 200px;
       padding: 10px;
     }
-    input {
+
+    input,
+    textarea {
       width: 100%;
       padding: 5px;
       margin-bottom: 10px;
     }
+
     button {
       width: 100%;
       padding: 5px;
       margin-bottom: 5px;
     }
+
     ul {
       list-style-type: none;
       padding: 0;
     }
+
     li {
       padding: 5px;
       border-bottom: 1px solid #ddd;
@@ -31,12 +38,14 @@
       justify-content: space-between;
       align-items: center;
     }
+
     .remove-btn {
       cursor: pointer;
       color: red;
     }
   </style>
 </head>
+
 <body>
   <div class="container">
     <h3>Block a Site</h3>
@@ -44,7 +53,11 @@
     <button id="blockButton">Block Site</button>
     <h3>Blocked Sites</h3>
     <ul id="blockedSitesList"></ul>
+    <h3>Customize Block Message</h3>
+    <textarea id="blockMessage" placeholder="Enter block message"></textarea>
+    <button id="saveMessageButton">Save Message</button>
   </div>
   <script src="popup.js"></script>
 </body>
+
 </html>

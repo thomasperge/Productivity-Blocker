@@ -1,14 +1,18 @@
 // background.js
 
-chrome.runtime.onInstalled.addListener(() => {
-  chrome.storage.sync.set({ blockedSites: [] });
-});
+chrome.webRequest.onBeforeRequest.addListener(
+  function (details) {
+    return new Promise((resolve) => {
+      chrome.storage.sync.get(['blockedSites'], function (result) {
+        const blockedSites = result.blockedSites || [];
+        const currentUrl = new URL(details.url);
 
-chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-  if (message.action === 'updateBlockedSites') {
-    chrome.storage.sync.set({ blockedSites: message.sites }, () => {
-      sendResponse({ status: 'success' });
+        const isBlocked = blockedSites.some(site => currentUrl.hostname.includes(site));
+
+        resolve({ cancel: isBlocked });
+      });
     });
-    return true;  // Indique que la réponse sera envoyée de manière asynchrone
-  }
-});
+  },
+  { urls: ["<all_urls>"] },
+  ["blocking"]
+);
