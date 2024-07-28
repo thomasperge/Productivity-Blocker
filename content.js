@@ -17,21 +17,31 @@ chrome.storage.sync.get(['blockedSites', 'blockMessage'], function (result) {
 
   if (isBlocked) {
     document.addEventListener("DOMContentLoaded", function () {
-      document.body.innerHTML = ''; // Clear the current page content
-      document.body.style.backgroundColor = 'black'; // Set background to black
-      document.body.style.fontFamily = "'Roboto', sans-serif"; // Set font to Roboto
+      document.body.innerHTML = '';
+      document.body.style.backgroundColor = 'black';
+      document.body.style.fontFamily = "'Roboto', sans-serif";
+
+      const containerDiv = document.createElement('div');
+      containerDiv.style.position = 'fixed';
+      containerDiv.style.top = '50%';
+      containerDiv.style.left = '50%';
+      containerDiv.style.transform = 'translate(-50%, -50%)';
+      containerDiv.style.color = 'white';
+      containerDiv.style.textAlign = 'center';
+
+      const reminderDiv = document.createElement('div');
+      reminderDiv.style.fontSize = '24px';
+      reminderDiv.style.marginBottom = '10px';
+      reminderDiv.innerText = 'Reminder:';
 
       const messageDiv = document.createElement('div');
-      messageDiv.style.position = 'fixed';
-      messageDiv.style.top = '50%';
-      messageDiv.style.left = '50%';
-      messageDiv.style.transform = 'translate(-50%, -50%)';
-      messageDiv.style.color = 'white';
-      messageDiv.style.fontSize = '24px';
-      messageDiv.style.textAlign = 'center';
+      messageDiv.style.fontSize = '20px';
       messageDiv.innerText = blockMessage;
 
-      document.body.appendChild(messageDiv);
+      containerDiv.appendChild(reminderDiv);
+      containerDiv.appendChild(messageDiv);
+
+      document.body.appendChild(containerDiv);
     });
   }
 });
