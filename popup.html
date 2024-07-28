@@ -1,62 +1,43 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Stay Focused, Block Sites</title>
-  <style>
-    body {
-      font-family: 'Roboto', sans-serif;
-    }
-
-    .container {
-      width: 200px;
-      padding: 10px;
-    }
-
-    input,
-    textarea {
-      width: 100%;
-      padding: 5px;
-      margin-bottom: 10px;
-    }
-
-    button {
-      width: 100%;
-      padding: 5px;
-      margin-bottom: 5px;
-    }
-
-    ul {
-      list-style-type: none;
-      padding: 0;
-    }
-
-    li {
-      padding: 5px;
-      border-bottom: 1px solid #ddd;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .remove-btn {
-      cursor: pointer;
-      color: red;
-    }
-  </style>
+  <link rel="stylesheet" href="popup.css">
 </head>
 
 <body>
+  <div class="message" id="success-message">Site added successfully!</div>
+
   <div class="container">
-    <h3>Block a Site</h3>
-    <input type="text" id="siteInput" placeholder="Enter site URL">
-    <button id="blockButton">Block Site</button>
-    <h3>Blocked Sites</h3>
-    <ul id="blockedSitesList"></ul>
-    <h3>Customize Block Message</h3>
-    <textarea id="blockMessage" placeholder="Enter block message"></textarea>
-    <button id="saveMessageButton">Save Message</button>
+    <h1 class="title">Stay Focused, Block Sites</h1>
+
+    <div class="input-group">
+      <input type="text" id="block-input" class="input" placeholder="Enter site URL to block">
+      <button id="block-button" class="button">+</button>
+    </div>
+
+    <div class="blocked-sites">
+      <h2>Blocked Sites</h2>
+      <ul id="blocked-sites" class="list"></ul>
+    </div>
+
+    <div class="input-group">
+      <input type="text" id="block-message-input" class="input" placeholder="Enter block message">
+      <button id="block-message-button" class="button">Save</button>
+    </div>
+
+    <div class="predefined-lists">
+      <h2>Predefined Lists</h2>
+      <div class="button-group">
+        <button id="block-social-media-button" class="button">Block Social Media</button>
+        <button id="block-entertainment-button" class="button">Block Entertainment</button>
+      </div>
+    </div>
   </div>
+
   <script src="popup.js"></script>
 </body>
 
