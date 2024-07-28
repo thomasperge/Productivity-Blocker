@@ -104,13 +104,18 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     const li = document.createElement('li');
-    li.textContent = site;
+
+    const websiteutl = document.createElement('span')
+    websiteutl.textContent = site
+    // li.textContent = site;
+    
     const removeBtn = document.createElement('span');
     removeBtn.textContent = '✕';
     removeBtn.classList.add('remove-btn');
     removeBtn.addEventListener('click', function () {
       removeSite(site);
     });
+    li.appendChild(websiteutl);
     li.appendChild(removeBtn);
     blockedSitesList.appendChild(li);
   }
