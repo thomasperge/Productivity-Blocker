@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Productivity Blocker</title>
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+    }
+    .container {
+      width: 200px;
+      padding: 10px;
+    }
+    input {
+      width: 100%;
+      padding: 5px;
+      margin-bottom: 10px;
+    }
+    button {
+      width: 100%;
+      padding: 5px;
+      margin-bottom: 5px;
+    }
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    li {
+      padding: 5px;
+      border-bottom: 1px solid #ddd;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .remove-btn {
+      cursor: pointer;
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h3>Block a Site</h3>
+    <input type="text" id="siteInput" placeholder="Enter site URL">
+    <button id="blockButton">Block Site</button>
+    <h3>Blocked Sites</h3>
+    <ul id="blockedSitesList"></ul>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>
