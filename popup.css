@@ -17,6 +17,18 @@ body {
 }
 
 .title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: .6rem;
+}
+
+.title > img {
+  width: 30px;
+  height: 30px;
+}
+
+.title {
   font-size: 18px;
   font-weight: 700;
   text-align: center;
