@@ -1,10 +1,4 @@
-const quotes = [
-  "Le succès, c'est se promener d'échecs en échecs tout en restant motivé. - Winston Churchill",
-  "Ne laissez pas le bruit des opinions des autres étouffer votre propre voix intérieure. - Steve Jobs",
-  "La meilleure façon de prédire l'avenir est de le créer. - Peter Drucker",
-  "Ne crains pas d'avancer lentement, crains seulement de t'arrêter. - Proverbe chinois",
-  "La seule limite à notre épanouissement de demain sera nos doutes d'aujourd'hui. - Franklin D. Roosevelt"
-];
+const quotes = "You need to work."
 
 chrome.storage.sync.get(['blockedSites', 'permanentBlockedSites', 'blockMessage'], function (result) {
   const blockedSites = result.blockedSites || [];
