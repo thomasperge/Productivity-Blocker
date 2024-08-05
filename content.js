@@ -1,5 +1,3 @@
-// content.js
-
 const quotes = [
   "Le succès, c'est se promener d'échecs en échecs tout en restant motivé. - Winston Churchill",
   "Ne laissez pas le bruit des opinions des autres étouffer votre propre voix intérieure. - Steve Jobs",
@@ -8,12 +6,14 @@ const quotes = [
   "La seule limite à notre épanouissement de demain sera nos doutes d'aujourd'hui. - Franklin D. Roosevelt"
 ];
 
-chrome.storage.sync.get(['blockedSites', 'blockMessage'], function (result) {
+chrome.storage.sync.get(['blockedSites', 'permanentBlockedSites', 'blockMessage'], function (result) {
   const blockedSites = result.blockedSites || [];
+  const permanentBlockedSites = result.permanentBlockedSites || [];
   const blockMessage = result.blockMessage || quotes[Math.floor(Math.random() * quotes.length)];
   const currentUrl = window.location.href;
 
-  const isBlocked = blockedSites.some(site => currentUrl.includes(site));
+  const isBlocked = blockedSites.some(site => currentUrl.includes(site)) ||
+    permanentBlockedSites.some(site => currentUrl.includes(site));
 
   if (isBlocked) {
     document.addEventListener("DOMContentLoaded", function () {
