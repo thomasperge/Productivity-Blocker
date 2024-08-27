@@ -125,6 +125,7 @@ document.addEventListener('DOMContentLoaded', function () {
       'https://x.com',
       'https://www.instagram.com',
       'https://www.tiktok.com',
+      'https://www.discord.com',
     ];
 
     chrome.storage.sync.get(['blockedSites', 'permanentBlockedSites'], function (result) {
